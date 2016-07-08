@@ -10,7 +10,9 @@ package com.halo.bumf.mvc.beans;
  * @version
  * @since
  */
-public class User {
+public class User extends PageModule {
+
+	private int id;
 
 	private String userName;
 
@@ -19,6 +21,21 @@ public class User {
 	private String userAccount;
 
 	private String passwd;
+
+	/**
+	 * @return int 用户序号
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param int
+	 *            id用户序号
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return String 用户名称，用户的真实姓名或昵称

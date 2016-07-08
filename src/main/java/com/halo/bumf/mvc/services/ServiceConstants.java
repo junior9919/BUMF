@@ -19,6 +19,11 @@ public class ServiceConstants {
 	public static final String SESSION_ID_USER = "logon_user";
 
 	/**
+	 * 在Session中保存的当前用户有权限的菜单的ID
+	 */
+	public static final String SESSION_ID_MENU = "user_menu";
+
+	/**
 	 * 用户登录成功时的返回值
 	 */
 	public static final String RETURN_LOGIN_GRANTED = "ok";

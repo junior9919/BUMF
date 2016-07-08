@@ -4,6 +4,7 @@
 package com.halo.bumf.mvc.beans;
 
 /**
+ * 可分页的数据实体对象
  * 
  * @author zyl
  * @date 2016年7月4日 下午7:40:18

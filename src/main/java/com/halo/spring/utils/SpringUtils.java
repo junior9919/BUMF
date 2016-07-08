@@ -27,8 +27,7 @@ public class SpringUtils implements ApplicationContextAware {
 			webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
 		}
 		if (null == webApplicationContext) {
-			throw new NullApplicationContextException(
-					"Spring WebApplicationContext is null, please check web.xml make sure ContextLoaderListener configuration is correct.");
+			throw new NullApplicationContextException("Spring WebApplicationContext is null, please check web.xml make sure ContextLoaderListener configuration is correct.");
 		}
 	}
 
@@ -71,6 +70,16 @@ public class SpringUtils implements ApplicationContextAware {
 			throw new NullApplicationContextException("Servlet context in web application context is null.");
 		}
 		servletContext.setAttribute(attrId, toAdd);
+	}
+
+	public static void removeFromServletContext(String attrId) throws NullApplicationContextException {
+		loadWebApplicationContext();
+		ServletContext servletContext = webApplicationContext.getServletContext();
+		if (null == servletContext) {
+			throw new NullApplicationContextException("Servlet context in web application context is null.");
+		}
+
+		servletContext.removeAttribute(attrId);
 	}
 
 	public static Object getFromServletContext(String attrId) {

@@ -5,7 +5,10 @@ package com.halo.bumf.mvc.daos.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.halo.bumf.mvc.daos.Dao;
 
 /**
@@ -17,6 +20,11 @@ import com.halo.bumf.mvc.daos.Dao;
  * @since
  */
 public class DaoBasicSupport<E> extends SqlSessionDaoSupport implements Dao<E> {
+
+	@Autowired
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 
 	/**
 	 * 查询单条记录，返回实体对象

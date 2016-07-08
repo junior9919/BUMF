@@ -39,6 +39,10 @@ public class UserServiceImpl implements UserService {
 			return SpringUtils.getMessage("user.denied", null);
 		}
 
+		if (!user.getPasswd().equals(userRst.getPasswd())) {
+			return SpringUtils.getMessage("user.denied", null);
+		}
+
 		SpringUtils.addIntoServletContext(ServiceConstants.SESSION_ID_USER, userRst);
 		return ServiceConstants.RETURN_LOGIN_GRANTED;
 	}

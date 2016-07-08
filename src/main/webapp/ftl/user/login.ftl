@@ -5,9 +5,9 @@
 <title>用户登录</title>
 </head>
 <body>
-	<form role="form" id="formLogin" action="/user/login.do" method="post">
+	<form role="form" id="formLogin" action="login.do" method="post">
 		<div>
-			<input type="text" value="${user.userAccount!" "}" placeholder="帐号"
+			<input type="text" placeholder="帐号"
 				name="userAccount" id="userAccount" autofocus />
 		</div>
 		<div>

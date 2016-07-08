@@ -11,6 +11,6 @@ package com.halo.bumf.mvc.daos;
  * @version
  * @since
  */
-public interface UserDao<User> extends Dao<User> {
+public interface UserDao<E> extends Dao<E> {
 
 }
