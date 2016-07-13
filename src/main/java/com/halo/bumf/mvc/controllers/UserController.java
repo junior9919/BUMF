@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -90,6 +91,10 @@ public class UserController {
 			User logonUser = (User) SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_USER);
 			modelMap.addAttribute(ControllerConstants.LABEL_NAME_LOGON_USER, logonUser);
 
+			@SuppressWarnings("unchecked")
+			List<Menu> menus = (List<Menu>) SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_MENU);
+			modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_MENU, menus);
+
 			return ControllerConstants.URL_FTL_HOME;
 		}
 	}
@@ -101,6 +106,24 @@ public class UserController {
 		}
 
 		return ControllerConstants.URL_FTL_LOGIN;
+	}
+
+	@RequestMapping("list.do")
+	public String list(HttpServletRequest request, @ModelAttribute("user") User user, ModelMap modelMap) {
+		String currentPage = request.getParameter("currentPage");
+		if (null == currentPage || currentPage.isEmpty()) {
+			currentPage = "0";
+		}
+
+		if (null == user) {
+			user = new User();
+		}
+		user.setCurrentPage(Integer.parseInt(currentPage));
+
+		List<User> users = userService.selectPage(user);
+		modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_LIST, users);
+
+		return ControllerConstants.URL_FTL_USER_LIST;
 	}
 
 }

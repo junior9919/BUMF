@@ -3,6 +3,8 @@
  */
 package com.halo.bumf.mvc.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,19 @@ public class UserServiceImpl implements UserService {
 
 		SpringUtils.addIntoServletContext(ServiceConstants.SESSION_ID_USER, userRst);
 		return ServiceConstants.RETURN_LOGIN_GRANTED;
+	}
+
+	/**
+	 * 分页查询用户信息
+	 * 
+	 * @param user
+	 *            含有查询条件的用户信息
+	 * @return 当前页上的用户信息列表
+	 */
+	@Override
+	public List<User> selectPage(User user) {
+		List<User> users = userDao.selectPage("com.halo.bumf.UserMapper.selectPage", "com.halo.bumf.UserMapper.selectCount", user);
+		return users;
 	}
 
 }

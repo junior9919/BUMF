@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.halo.bumf.UserMapper">
-	<select id="com.halo.bumf.UserMapper.selectByUserAccount" parameterType="com.halo.bumf.mvc.beans.User"
+	<select id="com.halo.bumf.UserMapper.selectByUserAccount"
+		parameterType="com.halo.bumf.mvc.beans.User" resultType="com.halo.bumf.mvc.beans.User">
+		select * from
+		User where userAccount = #{userAccount}
+	</select>
+	<select id="com.halo.bumf.UserMapper.selectPage" parameterType="com.halo.bumf.mvc.beans.User"
 		resultType="com.halo.bumf.mvc.beans.User">
-		select * from User where userAccount = #{userAccount}
+		select * from User where 1 = 1
+		<if test="${userName}  != null and ${userName} != ''">
+			and userName like concat('%', ${userName}, '%')
+		</if>
+		<if test="${userAccount}  != null and ${userAccount} != ''">
+			and userAccount like concat('%', ${userAccount}, '%')
+		</if>
+		limit ${firstRow}, ${rowsPerPage}
+	</select>
+	<select id="com.halo.bumf.UserMapper.selectCount" parameterType="com.halo.bumf.mvc.beans.User"
+		resultType="int">
+		select count(*) from User where 1 = 1
+		<if test="${userName}  != null and ${userName} != ''">
+			and userName like concat('%', ${userName}, '%')
+		</if>
+		<if test="${userAccount}  != null and ${userAccount} != ''">
+			and userAccount like concat('%', ${userAccount}, '%')
+		</if>
 	</select>
 </mapper>

@@ -3,6 +3,8 @@
  */
 package com.halo.bumf.mvc.services;
 
+import java.util.List;
+
 import com.halo.bumf.mvc.beans.User;
 
 /**
@@ -23,5 +25,14 @@ public interface UserService {
 	 * @return 认证通过返回字符串“ok”，否则返回认证失败原因
 	 */
 	public String login(User user);
+
+	/**
+	 * 分页查询用户信息
+	 * 
+	 * @param user
+	 *            含有查询条件的用户信息
+	 * @return 当前页上的用户信息列表
+	 */
+	public List<User> selectPage(User user);
 
 }

@@ -13,8 +13,6 @@ package com.halo.bumf.mvc.beans;
  */
 public class PageModule {
 
-	private int firstRow;
-
 	private int totalRow;
 
 	private int currentPage;
@@ -23,15 +21,8 @@ public class PageModule {
 	 * @return 分页参数，当前页第一行在数据库中记录的行号
 	 */
 	public int getFirstRow() {
+		int firstRow = (currentPage - 1) * ROWS_PER_PAGE;
 		return firstRow;
-	}
-
-	/**
-	 * @param firstRow
-	 *            分页参数，当前页第一行在数据库中记录的行号
-	 */
-	public void setFirstRow(int firstRow) {
-		this.firstRow = firstRow;
 	}
 
 	/**
@@ -76,6 +67,14 @@ public class PageModule {
 		}
 
 		return pages;
+	}
+
+	/**
+	 * 
+	 * @return 每页的行数
+	 */
+	public int getRowsPerPage() {
+		return ROWS_PER_PAGE;
 	}
 
 	/**

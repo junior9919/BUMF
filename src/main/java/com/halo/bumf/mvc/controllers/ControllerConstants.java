@@ -18,9 +18,15 @@ public class ControllerConstants {
 	public static final String URL_FTL_LOGIN = "/user/login";
 
 	public static final String URL_FTL_HOME = "/user/home";
+	
+	public static final String URL_FTL_USER_LIST = "/user/list";
 
 	public static final String LABEL_NAME_ERROR_MSG = "errorMsg";
 
 	public static final String LABEL_NAME_LOGON_USER = "logonUser";
+	
+	public static final String LABEL_NAME_USER_LIST = "userList";
+
+	public static final String LABEL_NAME_USER_MENU = "userMenu";
 
 }
