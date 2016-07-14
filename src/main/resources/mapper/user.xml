@@ -9,22 +9,22 @@
 	<select id="com.halo.bumf.UserMapper.selectPage" parameterType="com.halo.bumf.mvc.beans.User"
 		resultType="com.halo.bumf.mvc.beans.User">
 		select * from User where 1 = 1
-		<if test="${userName}  != null and ${userName} != ''">
-			and userName like concat('%', ${userName}, '%')
+		<if test="userName != null and userName != ''">
+			and userName like concat('%', '${userName}', '%')
 		</if>
-		<if test="${userAccount}  != null and ${userAccount} != ''">
-			and userAccount like concat('%', ${userAccount}, '%')
+		<if test="userAccount  != null and userAccount != ''">
+			and userAccount like concat('%', '${userAccount}', '%')
 		</if>
 		limit ${firstRow}, ${rowsPerPage}
 	</select>
 	<select id="com.halo.bumf.UserMapper.selectCount" parameterType="com.halo.bumf.mvc.beans.User"
 		resultType="int">
 		select count(*) from User where 1 = 1
-		<if test="${userName}  != null and ${userName} != ''">
-			and userName like concat('%', ${userName}, '%')
+		<if test="userName != null and userName != ''">
+			and userName like concat('%', '${userName}', '%')
 		</if>
-		<if test="${userAccount}  != null and ${userAccount} != ''">
-			and userAccount like concat('%', ${userAccount}, '%')
+		<if test="userAccount != null and userAccount != ''">
+			and userAccount like concat('%', '${userAccount}', '%')
 		</if>
 	</select>
 </mapper>

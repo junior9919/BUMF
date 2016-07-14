@@ -109,10 +109,10 @@ public class UserController {
 	}
 
 	@RequestMapping("list.do")
-	public String list(HttpServletRequest request, @ModelAttribute("user") User user, ModelMap modelMap) {
+	public String list(HttpServletRequest request, @ModelAttribute("user") User user, ModelMap modelMap) throws ControllerException {
 		String currentPage = request.getParameter("currentPage");
 		if (null == currentPage || currentPage.isEmpty()) {
-			currentPage = "0";
+			currentPage = "1";
 		}
 
 		if (null == user) {
