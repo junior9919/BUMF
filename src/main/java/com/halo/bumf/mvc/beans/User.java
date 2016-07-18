@@ -4,6 +4,7 @@
 package com.halo.bumf.mvc.beans;
 
 /**
+ * 用户数据对象
  * 
  * @author zyl
  * @date 2016年6月27日 下午8:35:22

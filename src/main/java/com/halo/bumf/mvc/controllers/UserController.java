@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.halo.bumf.mvc.beans.Menu;
+import com.halo.bumf.mvc.beans.Role;
 import com.halo.bumf.mvc.beans.User;
 import com.halo.bumf.mvc.services.MenuService;
+import com.halo.bumf.mvc.services.RoleService;
 import com.halo.bumf.mvc.services.ServiceConstants;
 import com.halo.bumf.mvc.services.UserService;
 import com.halo.spring.utils.SpringUtils;
@@ -37,6 +39,9 @@ public class UserController {
 
 	@Autowired
 	private MenuService menuService;
+
+	@Autowired
+	private RoleService roleService;
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
@@ -124,6 +129,27 @@ public class UserController {
 		modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_LIST, users);
 
 		return ControllerConstants.URL_FTL_USER_LIST;
+	}
+
+	@RequestMapping("add.do")
+	public String add() {
+		return ControllerConstants.URL_FTL_USER_EDIT;
+	}
+
+	@RequestMapping("edit.do")
+	public String edit(HttpServletRequest request, ModelMap modelMap) {
+		int id = 0;
+		if (null != request.getParameter("id")) {
+			id = Integer.parseInt(request.getParameter("id"));
+		}
+
+		User userRst = userService.selectUserById(id);
+		modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_SINGLE, userRst);
+		
+		List<Role> roles = roleService.selectAll();
+		modelMap.addAttribute(ControllerConstants.LABEL_NAME_ROLE_LIST, roles);
+
+		return ControllerConstants.URL_FTL_USER_EDIT;
 	}
 
 }

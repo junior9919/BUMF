@@ -62,4 +62,19 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
+	/**
+	 * 根据序号精确查询用户
+	 * 
+	 * @param id
+	 *            序号
+	 * @return 唯一的用户对象
+	 */
+	@Override
+	public User selectUserById(int id) {
+		User userCdt = new User();
+		userCdt.setId(id);
+		User userRst = userDao.selectOne("com.halo.bumf.UserMapper.selectById", userCdt);
+		return userRst;
+	}
+
 }

@@ -4,6 +4,7 @@
 package com.halo.bumf.mvc.beans;
 
 /**
+ * 菜单数据对象
  * 
  * @author zyl
  * @date 2016年7月6日 下午3:21:49

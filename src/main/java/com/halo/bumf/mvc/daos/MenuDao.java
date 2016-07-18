@@ -21,6 +21,6 @@ public interface MenuDao<E> extends Dao<E> {
 	 *            作为查询条件的用户序号
 	 * @return 用户有权限的菜单列表
 	 */
-	public List<E> selectList(String mybatisId, int userId);
+	public List<E> selectByUserId(String mybatisId, int userId);
 
 }

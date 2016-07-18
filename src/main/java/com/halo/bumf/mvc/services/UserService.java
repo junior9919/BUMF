@@ -35,4 +35,13 @@ public interface UserService {
 	 */
 	public List<User> selectPage(User user);
 
+	/**
+	 * 根据序号精确查询用户
+	 * 
+	 * @param id
+	 *            序号
+	 * @return 唯一的用户对象
+	 */
+	public User selectUserById(int id);
+
 }

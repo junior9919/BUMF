@@ -27,4 +27,8 @@
 			and userAccount like concat('%', '${userAccount}', '%')
 		</if>
 	</select>
+	<select id="com.halo.bumf.UserMapper.selectById" parameterType="int"
+		resultType="com.halo.bumf.mvc.beans.User">
+		select * from User where id = ${id}
+	</select>
 </mapper>

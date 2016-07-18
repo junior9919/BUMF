@@ -20,7 +20,7 @@ import com.halo.bumf.mvc.daos.MenuDao;
 public class MenuDaoImpl<E extends PageModule> extends DaoPageSupport<E> implements MenuDao<E> {
 
 	@Override
-	public List<E> selectList(String mybatisId, int userId) {
+	public List<E> selectByUserId(String mybatisId, int userId) {
 		return getSqlSession().selectList(mybatisId, userId);
 	}
 

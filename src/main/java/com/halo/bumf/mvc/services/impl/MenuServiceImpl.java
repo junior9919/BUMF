@@ -36,7 +36,7 @@ public class MenuServiceImpl implements MenuService {
 	 */
 	@Override
 	public void getMenuByUserId(int userId) {
-		List<Menu> menus = menuDao.selectList("com.halo.bumf.MenuMapper.selectByUserId", userId);
+		List<Menu> menus = menuDao.selectByUserId("com.halo.bumf.MenuMapper.selectByUserId", userId);
 		SpringUtils.addIntoServletContext(ServiceConstants.SESSION_ID_MENU, menus);
 	}
 
