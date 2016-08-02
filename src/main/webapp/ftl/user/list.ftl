@@ -31,7 +31,7 @@
 					<td>男</td>
 				</#if>
 				<td>${user.userAccount ! ""}</td>
-				<td><a href="/user/edit.do?id=#{user.id!""}">编辑</a></td>
+				<td><a href="edit.do?id=#{user.id!""}">编辑</a></td>
 			</tr>
 			<#assign totalPage = user.totalPage /> 
 			<#assign currentPage = user.currentPage />

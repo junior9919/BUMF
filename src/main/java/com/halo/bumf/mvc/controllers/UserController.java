@@ -44,9 +44,15 @@ public class UserController {
 	private RoleService roleService;
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String login() {
+	public String login(HttpServletRequest request) {
 		if (null != SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_USER)) {
-			return ControllerConstants.URL_REDIRECT_HOME;
+			String go = null;
+			if (null != request.getParameter("go")) {
+				go = request.getParameter("go");
+				return "redirect:" + go;
+			} else {
+				return ControllerConstants.URL_REDIRECT_HOME;
+			}
 		}
 
 		// String path =
@@ -145,7 +151,7 @@ public class UserController {
 
 		User userRst = userService.selectUserById(id);
 		modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_SINGLE, userRst);
-		
+
 		List<Role> roles = roleService.selectAll();
 		modelMap.addAttribute(ControllerConstants.LABEL_NAME_ROLE_LIST, roles);
 

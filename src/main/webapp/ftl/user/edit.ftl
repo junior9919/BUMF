@@ -11,6 +11,7 @@
 	<#assign formAction = "insert" />
 </#if>
 <form action="/" id="formEdit" method="post">
+<table>
 	<tr>
 		<td colspan="2">
 			<input type="hidden" name="id" value="${user.id!""}" />
@@ -21,7 +22,7 @@
 		<td>
 			<select name="role">
 				<#list roleList as role>
-					<option value="${role.id}" <#if user.roleId == role.id>selected="selected"</#if>>#{role.roleName}</option>
+					<option value="${role.id}" <#if user.roleId == role.id>selected="selected"</#if>>${role.roleName!""}</option>
 				</#list>
 			</select>
 		</td>
@@ -79,6 +80,7 @@
 			</#if>			
 		</td>
 	</tr>
+</table>
 </form>
 </body>
 </html>

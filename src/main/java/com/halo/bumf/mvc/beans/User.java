@@ -14,6 +14,8 @@ package com.halo.bumf.mvc.beans;
 public class User extends PageModule {
 
 	private int id;
+	
+	private int roleId;
 
 	private String userName;
 
@@ -36,6 +38,20 @@ public class User extends PageModule {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the roleId
+	 */
+	public int getRoleId() {
+		return roleId;
+	}
+
+	/**
+	 * @param roleId the roleId to set
+	 */
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	/**
