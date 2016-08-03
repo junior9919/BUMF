@@ -14,6 +14,8 @@ package com.halo.bumf.mvc.controllers;
 public class ControllerConstants {
 
 	public static final String URL_REDIRECT_HOME = "redirect:/user/home.do";
+	
+	public static final String URL_ACTION_LOGIN = "/user/login.do";
 
 	public static final String URL_FTL_LOGIN = "/user/login";
 
@@ -34,5 +36,7 @@ public class ControllerConstants {
 	public static final String LABEL_NAME_ROLE_LIST = "roleList";
 
 	public static final String LABEL_NAME_USER_MENU = "userMenu";
+	
+	public static final String LABEL_NAME_ROOT_URL = "rootUrl";
 
 }

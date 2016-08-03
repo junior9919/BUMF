@@ -11,6 +11,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.halo.bumf.mvc.controllers.ControllerConstants;
@@ -33,9 +34,13 @@ public class CheckLoginFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-		if (null == SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_USER)) {
+		HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+		String relativeUrl = httpRequest.getServletPath();
+		if (null == SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_USER) && !relativeUrl.equals(ControllerConstants.URL_ACTION_LOGIN)) {
+			String rootUrl = httpRequest.getContextPath();
+
 			HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-			httpResponse.sendRedirect(ControllerConstants.URL_FTL_LOGIN);
+			httpResponse.sendRedirect(rootUrl + ControllerConstants.URL_ACTION_LOGIN);
 			return;
 		}
 		filterChain.doFilter(servletRequest, servletResponse);

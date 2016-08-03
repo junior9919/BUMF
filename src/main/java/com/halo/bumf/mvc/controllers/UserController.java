@@ -95,7 +95,7 @@ public class UserController {
 	}
 
 	@RequestMapping("home.do")
-	public String home(ModelMap modelMap) {
+	public String home(HttpServletRequest request, ModelMap modelMap) {
 		if (null == SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_USER)) {
 			return ControllerConstants.URL_FTL_LOGIN;
 		} else {
@@ -105,6 +105,9 @@ public class UserController {
 			@SuppressWarnings("unchecked")
 			List<Menu> menus = (List<Menu>) SpringUtils.getFromServletContext(ServiceConstants.SESSION_ID_MENU);
 			modelMap.addAttribute(ControllerConstants.LABEL_NAME_USER_MENU, menus);
+
+			String rootUrl = request.getContextPath();
+			modelMap.addAttribute(ControllerConstants.LABEL_NAME_ROOT_URL, rootUrl);
 
 			return ControllerConstants.URL_FTL_HOME;
 		}

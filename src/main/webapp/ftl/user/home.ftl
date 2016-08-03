@@ -8,7 +8,7 @@
 	<h1>欢迎你，${logonUser.userName!""}</h1>
 	
 	<#list userMenu as menu>
-		<div><a href="${menu.pageUrl!""}">${menu.menuName!""}</a></div>
+		<div><a href="${rootUrl}${menu.pageUrl!""}">${menu.menuName!""}</a></div>
 	</#list>
 	
 	<div><a href="logout.do">注销 ${logonUser.userName!""}</a></div>
